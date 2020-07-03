@@ -245,7 +245,6 @@ function callMain(args) {
       noExitRuntime = true;
       return;
     } else {
-      var toLog = e;
       err('exception thrown: ' + e);
       quit_(1, e);
     }
