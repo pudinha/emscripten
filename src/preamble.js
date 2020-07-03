@@ -689,7 +689,6 @@ function abort(what) {
   if (ENVIRONMENT_IS_PTHREAD) console.error('Pthread aborting at ' + new Error().stack);
 #endif
   what += '';
-  out(what);
   err(what);
 
   ABORT = true;

@@ -246,10 +246,7 @@ function callMain(args) {
       return;
     } else {
       var toLog = e;
-      if (e && typeof e === 'object' && e.stack) {
-        toLog = [e, e.stack];
-      }
-      err('exception thrown: ' + toLog);
+      err('exception thrown: ' + e);
       quit_(1, e);
     }
 #endif // !PROXY_TO_PTHREAD
