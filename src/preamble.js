@@ -701,10 +701,10 @@ function abort(what) {
   what = output;
 #endif // ASSERTIONS
 
+#if WASM
   // Throw a wasm runtime error, because a JS error might be seen as a foreign
   // exception, which means we'd run destructors on it. We need the error to
   // simply make the program stop.
-#if WASM
   throw new WebAssembly.RuntimeError(what);
 #else
   throw what;

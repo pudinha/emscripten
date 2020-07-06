@@ -245,7 +245,15 @@ function callMain(args) {
       noExitRuntime = true;
       return;
     } else {
-      err('exception thrown: ' + e);
+      var toLog = e;
+      // add the stacktrace, unless its already included in the exception
+      // message itself (jsStackTrace does this).
+      if (e && typeof e === 'object' && e.stack) {
+        if (!e.stack.includes('jsStackTrace')) {
+          toLog = [e, e.stack];
+        }
+      }
+      err('exception thrown: ' + toLog);
       quit_(1, e);
     }
 #endif // !PROXY_TO_PTHREAD
